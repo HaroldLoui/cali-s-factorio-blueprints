@@ -1,2 +1,3 @@
-# cali-s-factorio-blueprints
-cali的异星工厂蓝图集
+# Cali‘s Factorio Blueprints
+
+Cali的异星工厂蓝图集
