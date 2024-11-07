@@ -2,13 +2,26 @@ from enum import Enum
 
 
 class QualityType(Enum):
-	# 品质枚举
+	"""品质枚举"""
 	
 	NORMAL = 'normal'
 	UNCOMMON = 'uncommon'
 	RARE = 'rare'
 	EPIC = 'epic'
 	LEGENDARY = 'legendary'
+
+
+class DirectionType(Enum):
+	"""方向枚举"""
+	
+	NORTH = 0  # 北
+	NORTH_EAST = 2  # 东北
+	EAST = 4  # 东
+	SOUTH_EAST = 6  # 东南
+	SOUTH = 8  # 南
+	SOUTH_WEST = 10  # 西南
+	WEST = 12  # 西
+	NORTH_WEST = 14  # 西北
 
 
 # 全品质列表

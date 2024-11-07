@@ -1,9 +1,6 @@
-from pprint import pprint
-
 from PIL import Image, ImageEnhance
-import pyperclip
 
-from my_factorio_consts import ALL_SIGNAL_DICT, ALL_QUALITY_LIST
+from my_factorio_consts import ALL_SIGNAL_DICT, ALL_QUALITY_LIST, QualityType
 from my_factorio_lib import *
 
 
@@ -103,8 +100,66 @@ def generate_one_item_constant_combinator_blueprint() -> str:
 	return dict_to_blueprint(d)
 
 
+def generate_screen_blueprint(
+		width: int = 10, height: int = 10,
+		wire_type_list: list | None = None,
+		always_on: bool = True) -> str:
+	"""参数化生成彩色显示屏"""
+	
+	if width * height > 2985:
+		print('像素总和超过2985上限！')
+		return ''
+	
+	d = {
+		'blueprint': {
+			'entities': [],
+			'item': 'blueprint',
+			'wires': [],
+		}
+	}
+	
+	for x in range(width):
+		for y in range(height):
+			_ = {
+				'entity_number': y * width + x + 1,
+				'name': 'small-lamp',
+				'position': {'x': x, 'y': y},
+				'control_behavior': {
+					'color_mode': 2,
+					'use_colors': True,
+					'rgb_signal': {},
+				},
+				'always_on': always_on
+			}
+			
+			_['control_behavior']['rgb_signal']['name'] = ALL_SIGNAL_DICT[str((y * width + x) // 5)]['name']
+			_['control_behavior']['rgb_signal']['quality'] = ALL_QUALITY_LIST[(y * width + x) % 5]
+			
+			if 'type' in ALL_SIGNAL_DICT[str((y * width + x) // 5)]:
+				_['control_behavior']['rgb_signal']['type'] = ALL_SIGNAL_DICT[str((y * width + x) // 5)]['type']
+			
+			d['blueprint']['entities'].append(_)
+	
+	if wire_type_list:
+		for x in range(width):
+			for y in range(height):
+				if (x + 1) % width == 0 and y > 0:  # 连接最后一列电灯
+					if 1 in wire_type_list:
+						d['blueprint']['wires'].append([(y - 1) * width + x + 1, 1, y * width + x + 1, 1])
+					if 2 in wire_type_list:
+						d['blueprint']['wires'].append([(y - 1) * width + x + 1, 2, y * width + x + 1, 2])
+				
+				if x > 0:  # 连接水平电灯
+					if 1 in wire_type_list:
+						d['blueprint']['wires'].append([y * width + x, 1, y * width + x + 1, 1])
+					if 2 in wire_type_list:
+						d['blueprint']['wires'].append([y * width + x, 2, y * width + x + 1, 2])
+	
+	return dict_to_blueprint(d)
+
+
 def get_image_rgb_list(img: str, width: int = 10, height: int = 10) -> list:
-	# 获取一个图片的像素rgb列表
+	"""获取一个图片的像素rgb列表"""
 	
 	img = Image.open(img)
 	img = img.resize((width, height))
@@ -129,56 +184,11 @@ def get_image_rgb_list(img: str, width: int = 10, height: int = 10) -> list:
 	return _
 
 
-def generate_screen_blueprint(width: int = 10, height: int = 10, wire_type: int = 1) -> str:
-	# 参数化生成彩色显示屏
-	
-	if width * height > 2960:
-		print('像素总和超过2960上限！')
-		return ''
-	
-	d = {
-		'blueprint': {
-			'entities': [],
-			'item': 'blueprint',
-			'wires': [],
-		}
-	}
-	
-	for x in range(width):
-		for y in range(height):
-			_ = {
-				'entity_number': y * width + x + 1,
-				'name': 'small-lamp',
-				'position': {'x': x, 'y': y},
-				'control_behavior': {
-					'color_mode': 2,
-					'use_colors': True,
-					'rgb_signal': {},
-				},
-				'always_on': True
-			}
-			
-			_['control_behavior']['rgb_signal']['name'] = ALL_SIGNAL_DICT[str((y * width + x) // 5)]['name']
-			_['control_behavior']['rgb_signal']['quality'] = ALL_QUALITY_LIST[(y * width + x) % 5]
-			
-			if 'type' in ALL_SIGNAL_DICT[str((y * width + x) // 5)]:
-				_['control_behavior']['rgb_signal']['type'] = ALL_SIGNAL_DICT[str((y * width + x) // 5)]['type']
-			
-			d['blueprint']['entities'].append(_)
-			
-			if (x + 1) % width == 0 and y > 0:  # 连接第一列电灯
-				d['blueprint']['wires'].append([(y - 1) * width + x + 1, wire_type, y * width + x + 1, wire_type])
-			if x > 0:  # 连接水平电灯
-				d['blueprint']['wires'].append([y * width + x, wire_type, y * width + x + 1, wire_type])
-	
-	return dict_to_blueprint(d)
-
-
-def generate_image_blueprint(img: str, width: int = 10, height: int = 10) -> str:
+def generate_image_blueprint(img_path: str, width: int = 10, height: int = 10) -> str:
 	# 参数化生成图片蓝图
 	
 	pixel_count = width * height
-	pixel_list = get_image_rgb_list(img, width, height)
+	pixel_list = get_image_rgb_list(img_path, width, height)
 	
 	item_dict_list = []
 	item_dict_cache = []
@@ -235,13 +245,22 @@ def generate_image_blueprint(img: str, width: int = 10, height: int = 10) -> str
 
 
 if __name__ == '__main__':
+	from pprint import pprint
+	import pyperclip
+	
 	with open('blueprint_cache.txt', 'r') as f:
 		bp = f.read()
-	pprint(blueprint_to_dict(bp))
+	
+	bp = blueprint_to_dict(bp)
+	for e in bp['blueprint']['entities']:
+		e['quality'] = QualityType.LEGENDARY.value
+	pyperclip.copy(dict_to_blueprint(bp))
+	
+	# pprint(bp)
 	
 	# pyperclip.copy(generate_one_item_constant_combinator_blueprint())
 	
-	# pyperclip.copy(generate_screen_blueprint(10, 10, wire_type=2))
+	pyperclip.copy(generate_screen_blueprint(53, 53, wire_type=2))
 	# pyperclip.copy(generate_image_blueprint('cali.png', 10, 10))
 	
 	pass
