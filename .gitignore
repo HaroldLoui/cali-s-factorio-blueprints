@@ -1,3 +1,6 @@
 toolbox/scripts/dist
 toolbox/scripts/build
 .idea
+
+__pycache__
+uv.lock
