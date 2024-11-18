@@ -1,7 +1,8 @@
-from PIL import Image, ImageEnhance
+from PIL import Image, ImageEnhance, ImageFile
 
-from my_factorio_consts import ALL_SIGNAL_DICT, ALL_QUALITY_LIST, QualityType
 from my_factorio_lib import *
+
+"""测试用函数"""
 
 
 def generate_all_signal_dict():
@@ -100,6 +101,9 @@ def generate_one_item_constant_combinator_blueprint() -> str:
 	return dict_to_blueprint(d)
 
 
+"""生产用函数"""
+
+
 def generate_screen_blueprint(
 		width: int = 10, height: int = 10,
 		wire_type_list: list | None = None,
@@ -158,19 +162,27 @@ def generate_screen_blueprint(
 	return dict_to_blueprint(d)
 
 
-def get_image_rgb_list(img: str, width: int = 10, height: int = 10) -> list:
+def get_gif_duration(gif_path: str) -> int:
+	"""获取一个gif的帧间间隔，单位为tick"""
+	
+	gif = Image.open(gif_path)
+	duration_ms = int(gif.info['duration'])
+	duration_tick = int(duration_ms * 0.06)
+	return duration_tick
+
+
+def get_frame_rgb_list(frame: ImageFile, width: int = 10, height: int = 10) -> list:
 	"""获取一个图片的像素rgb列表"""
 	
-	img = Image.open(img)
-	img = img.resize((width, height))
+	frame = frame.resize((width, height))
 	
-	enhancer = ImageEnhance.Contrast(img)
-	img = enhancer.enhance(1.5)
+	enhancer = ImageEnhance.Contrast(frame)
+	frame = enhancer.enhance(1.5)
 	
-	pix = img.load()
+	pix = frame.load()
 	
-	width = img.size[0]
-	height = img.size[1]
+	width = frame.size[0]
+	height = frame.size[1]
 	
 	_ = []
 	
@@ -184,83 +196,140 @@ def get_image_rgb_list(img: str, width: int = 10, height: int = 10) -> list:
 	return _
 
 
-def generate_image_blueprint(img_path: str, width: int = 10, height: int = 10) -> str:
-	# 参数化生成图片蓝图
+def generate_mini_static_image_blueprint(img_path: str, width: int = 10, height: int = 10) -> str:
+	"""参数化生成小静态图片蓝图"""
 	
-	pixel_count = width * height
-	pixel_list = get_image_rgb_list(img_path, width, height)
+	bp_object = Blueprint()
+	cc_object = ConstantCombinator()
 	
-	item_dict_list = []
-	item_dict_cache = []
-	for i in range(pixel_count):
-		if i % 1000 == 0:
-			if item_dict_cache:
-				item_dict_list.append(item_dict_cache)
-			item_dict_cache = []
-		
-		_ = {
-			'comparator': '=',
-			'count': 1,
-			'index': i % 1000 + 1,
-			'name': ALL_SIGNAL_DICT[str(i // 5)]['name'],
-			'quality': ALL_QUALITY_LIST[i % 5]
-		}
-		
-		if 'type' in ALL_SIGNAL_DICT[str(i // 5)]:
-			_['type'] = ALL_SIGNAL_DICT[str(i // 5)]['type']
-		
-		_['count'] = pixel_list[i][0] << 16 | pixel_list[i][1] << 8 | pixel_list[i][2]
-		
-		item_dict_cache.append(_)
-		
-		if i == pixel_count - 1:
-			if item_dict_cache:
-				item_dict_list.append(item_dict_cache)
+	rgb_list = get_frame_rgb_list(Image.open(img_path), width, height)
+	for i in range(len(rgb_list)):
+		cc_object.add_filter_auto(count=rgb_list[i][0] << 16 | rgb_list[i][1] << 8 | rgb_list[i][2])
 	
-	d = {
-		'blueprint': {
-			'entities': [
-				{
-					'control_behavior': {
-						'sections': {
-							'sections': []
-						}
-					},
-					'entity_number': 1,
-					'name': 'constant-combinator',
-					'position': {'x': 0, 'y': 0}}
-			],
-			'item': 'blueprint'}
-	}
+	bp_object.add_entity(cc_object)
+	return dict_to_blueprint(bp_object.get_dict())
+
+
+def generate_mini_dynamic_image_blueprint(gif_path: str, width: int = 10, height: int = 10, duration: int = 1) -> str:
+	"""参数化生成小动态图片蓝图"""
 	
-	for i in range(len(item_dict_list)):
-		d['blueprint']['entities'][0]['control_behavior']['sections']['sections'].append(
-			{
-				'filters': item_dict_list[i],
-				'index': i + 1
-			}
+	gif = Image.open(gif_path)
+	print("n_frames={}".format(gif.n_frames))
+	print("duration={}ms".format(gif.info['duration']))
+	
+	bp_object = Blueprint()
+	
+	# 生成常量运算器
+	image_cc_list = []  # 存储每一帧图形的常量运算器列表
+	for i in range(gif.n_frames):
+		gif.seek(i)
+		rgb_list = get_frame_rgb_list(gif.convert('RGB'), width, height)
+		
+		cc_object = ConstantCombinator()
+		bp_object.add_entity(cc_object)
+		image_cc_list.append(cc_object)
+		
+		cc_object.position_x = 0.5
+		cc_object.position_y = i + 0.5
+		cc_object.rotate_to(DirectionType.EAST.value)
+		
+		for p in range(len(rgb_list)):
+			cc_object.add_filter_auto(count=rgb_list[p][0] << 16 | rgb_list[p][1] << 8 | rgb_list[p][2])
+	
+	# 生成与常量运算器配对的判断运算器
+	image_select_dc_list = []
+	for i in range(gif.n_frames):
+		dc_object = DeciderCombinator()
+		bp_object.add_entity(dc_object)
+		image_select_dc_list.append(dc_object)
+		
+		dc_object.position_x = 2
+		dc_object.position_y = i + 0.5
+		dc_object.rotate_to(DirectionType.EAST.value)
+		dc_object.add_condition(
+			comparator='=', constant=i,
+			first_signal_name='signal-dot', first_signal_type='virtual', first_use_red_network=False
 		)
+		dc_object.add_output(signal_name='signal-everything', signal_type='virtual', use_green_network=False)
+		
+		if i == gif.n_frames - 1:
+			dc_object.add_condition(
+				comparator='=', constant=i + 1,
+				first_signal_name='signal-dot', first_signal_type='virtual',
+				first_use_red_network=False, first_use_green_network=True,
+			)
 	
-	return dict_to_blueprint(d)
+	# 连接图片存储器和选择器的红线
+	for i in range(len(image_cc_list)):
+		bp_object.connect_entity(image_cc_list[i], image_select_dc_list[i], 'ii', 'r')
+	
+	# 将所有选择器用红绿线相连
+	for i in range(len(image_select_dc_list)):
+		if i == 0:
+			continue
+		bp_object.connect_entity(image_select_dc_list[i - 1], image_select_dc_list[i], 'ii', 'g')
+		bp_object.connect_entity(image_select_dc_list[i - 1], image_select_dc_list[i], 'oo', 'rg')
+	
+	# 生成控制模块中的常量运算器
+	control_cc_object = ConstantCombinator()
+	bp_object.add_entity(control_cc_object)
+	control_cc_object.position_x = 0.5
+	control_cc_object.position_y = -2.5
+	control_cc_object.rotate_to(DirectionType.SOUTH.value)
+	control_cc_object.set_filter(1, 1, 'signal-dot', 'virtual', 1)
+	
+	# 生成控制模块中的判断运算器
+	control_dc_object = DeciderCombinator()
+	bp_object.add_entity(control_dc_object)
+	control_dc_object.position_x = 0.5
+	control_dc_object.position_y = -1.0
+	control_dc_object.rotate_to(DirectionType.SOUTH.value)
+	control_dc_object.add_condition(
+		comparator="<", constant=gif.n_frames * duration, first_signal_name='signal-dot',
+		first_signal_type='virtual')
+	control_dc_object.add_output(signal_name='signal-everything', signal_type='virtual')
+	
+	# 生成控制模块中的算术运算器
+	control_ac_object = ArithmeticCombinator()
+	bp_object.add_entity(control_ac_object)
+	control_ac_object.position_x = 1.5
+	control_ac_object.position_y = -1.0
+	control_ac_object.rotate_to(DirectionType.SOUTH.value)
+	control_ac_object.set_first_signal('signal-dot', 'virtual')
+	control_ac_object.set_operation("/")
+	control_ac_object.set_second_constant(duration)
+	control_ac_object.set_output_signal('signal-dot', 'virtual')
+	
+	# 连接控制模块信号线
+	bp_object.connect_entity(control_cc_object, control_dc_object, 'ii', 'r')
+	bp_object.connect_entity(control_dc_object, control_dc_object, 'io', 'r')
+	bp_object.connect_entity(control_dc_object, control_ac_object, 'ii', 'r')
+	bp_object.connect_entity(control_ac_object, image_select_dc_list[0], 'oi', 'g')
+	
+	return dict_to_blueprint(bp_object.get_dict())
 
 
 if __name__ == '__main__':
 	from pprint import pprint
 	import pyperclip
 	
-	with open('blueprint_cache.txt', 'r') as f:
-		bp = f.read()
-	
-	bp = blueprint_to_dict(bp)
-	for e in bp['blueprint']['entities']:
-		e['quality'] = QualityType.LEGENDARY.value
-	pyperclip.copy(dict_to_blueprint(bp))
-	
+	# with open('blueprint_cache.txt', 'r') as f:
+	# 	bp = f.read()
+	#
+	# bp = blueprint_to_dict(bp)
 	# pprint(bp)
+	
+	# for e in bp['blueprint']['entities']:
+	# 	e['quality'] = QualityType.LEGENDARY.value
+	# pyperclip.copy(dict_to_blueprint(bp))
 	
 	# pyperclip.copy(generate_one_item_constant_combinator_blueprint())
 	
-	pyperclip.copy(generate_screen_blueprint(53, 53, wire_type=2))
+	# pyperclip.copy(generate_screen_blueprint(53, 53, wire_type_list=[2]))
 	# pyperclip.copy(generate_image_blueprint('cali.png', 10, 10))
+	
+	pyperclip.copy(
+		generate_mini_dynamic_image_blueprint(
+			'D:/Github/Projects/cali-s-factorio-blueprints/toolbox/media/earth.gif', 54, 54))
 	
 	pass

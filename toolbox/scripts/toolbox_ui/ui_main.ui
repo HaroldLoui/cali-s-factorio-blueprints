@@ -38,350 +38,767 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;欢迎使用CaliFall的Factorio工具盒！&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;目前已实现的功能：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;- 生成彩色显示屏&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;- 生成供彩色显示屏使用的包含彩色图片信息的常量运算器&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:16pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;联系方式：BiliBili搜索CaliFall&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:24pt; font-weight:600;&quot;&gt;欢迎使用CaliFall的Factorio工具盒！&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑';&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt;&quot;&gt;目前已实现的功能：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt;&quot;&gt;- 生成彩色显示屏&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt;&quot;&gt;- 生成供彩色显示屏使用的包含彩色图片信息的常量运算器&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt;&quot;&gt;-生成供彩色显示屏使用的动图控制模块&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'微软雅黑'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:16pt;&quot;&gt;联系方式：BiliBili搜索CaliFall&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_screen">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QWidget" name="tab_mini_image">
        <attribute name="title">
-        <string>显示屏生成</string>
+        <string>小彩图生成</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+       <layout class="QVBoxLayout" name="verticalLayout_20">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,0,0,0,0">
-          <item>
-           <widget class="QGroupBox" name="groupBox">
-            <property name="title">
-             <string>显示屏大小</string>
-            </property>
-            <property name="flat">
-             <bool>false</bool>
-            </property>
-            <property name="checkable">
-             <bool>false</bool>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <layout class="QGridLayout" name="gridLayout">
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_screen_height">
-                 <property name="text">
-                  <string>高度：</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_screen_width">
-                 <property name="text">
-                  <string>宽度：</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QSpinBox" name="spinBox_screen_width">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimum">
-                  <number>1</number>
-                 </property>
-                 <property name="maximum">
-                  <number>9999</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QSpinBox" name="spinBox_screen_height">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimum">
-                  <number>1</number>
-                 </property>
-                 <property name="maximum">
-                  <number>9999</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>注：像素上限为2985</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_2">
-            <property name="title">
-             <string>信号线</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <item>
-                <widget class="QCheckBox" name="checkBox_screen_red_wire">
-                 <property name="text">
-                  <string>红线</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_screen_green_wire">
-                 <property name="text">
-                  <string>绿线</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_3">
-            <property name="title">
-             <string>其他设置</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_6">
-             <item>
-              <widget class="QCheckBox" name="checkBox_screen_always_on">
-               <property name="text">
-                <string>保持开启</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_screen_generate">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Agency FB</family>
-              <pointsize>14</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>生成蓝图</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
-          <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit_screen_output">
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_screen_copy">
-            <property name="font">
-             <font>
-              <family>Agency FB</family>
-              <pointsize>14</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>复制蓝图</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_mini_image_screen">
+           <attribute name="title">
+            <string>显示屏生成</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,0,0,0,0">
+              <item>
+               <widget class="QGroupBox" name="groupBox">
+                <property name="title">
+                 <string>显示屏大小设置</string>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item>
+                    <widget class="QLabel" name="label_screen_width">
+                     <property name="text">
+                      <string>宽度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_screen_width">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_screen_height">
+                     <property name="text">
+                      <string>高度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_screen_height">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>注1：像素上限为2935</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>注2：必须启用太空时代DLC</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_2">
+                <property name="title">
+                 <string>信号线设置</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <item>
+                    <widget class="QCheckBox" name="checkBox_mini_screen_red_wire">
+                     <property name="text">
+                      <string>红线</string>
+                     </property>
+                     <property name="checked">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QCheckBox" name="checkBox_mini_screen_green_wire">
+                     <property name="text">
+                      <string>绿线</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_3">
+                <property name="title">
+                 <string>其他设置</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_mini_screen_always_on">
+                   <property name="text">
+                    <string>保持开启</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_screen_generate">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>生成蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QGroupBox" name="groupBox_6">
+                <property name="title">
+                 <string>蓝图输出</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_13">
+                 <item>
+                  <widget class="QPlainTextEdit" name="plainTextEdit_mini_screen_output">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Sunken</enum>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_screen_copy">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>复制蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_mini_image_blueprint">
+           <attribute name="title">
+            <string>静态图片生成</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="0,1">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QGroupBox" name="groupBox_4">
+                <property name="title">
+                 <string>静态图片蓝图设置</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>宽度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_image_width">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string>高度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_image_height">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>注1：务必和显示屏相同</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="text">
+                    <string>注2：必须启用太空时代DLC</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_5">
+                <property name="title">
+                 <string>静态图片文件</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_12">
+                 <item>
+                  <widget class="QLabel" name="label_mini_image">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Sunken</enum>
+                   </property>
+                   <property name="text">
+                    <string>暂未选择图片</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_mini_image_select">
+                   <property name="font">
+                    <font>
+                     <family>微软雅黑</family>
+                     <pointsize>14</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>选择图片</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_image_generate">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>生成蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QGroupBox" name="groupBox_7">
+                <property name="title">
+                 <string>蓝图输出</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <item>
+                  <widget class="QPlainTextEdit" name="plainTextEdit_mini_image_output">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_image_copy">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>复制蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_mini_image_blueprint_dynamic">
+           <attribute name="title">
+            <string>动态图片生成</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_22">
+              <item>
+               <widget class="QGroupBox" name="groupBox_11">
+                <property name="title">
+                 <string>动态图片蓝图设置</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_23">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <widget class="QLabel" name="label_11">
+                     <property name="text">
+                      <string>宽度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_image_dynamic_width">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_13">
+                     <property name="text">
+                      <string>高度：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_image_dynamic_height">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                     <property name="value">
+                      <number>32</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_10">
+                   <item>
+                    <widget class="QLabel" name="label_19">
+                     <property name="text">
+                      <string>帧间间隔(Tick)：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_mini_image_dynamic_duration">
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>9999</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_15">
+                   <property name="text">
+                    <string>注1：务必和显示屏相同</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_17">
+                   <property name="text">
+                    <string>注2：必须启用太空时代DLC</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_12">
+                <property name="title">
+                 <string>GIF图片文件</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_24">
+                 <item>
+                  <widget class="QLabel" name="label_mini_image_dynamic">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Sunken</enum>
+                   </property>
+                   <property name="text">
+                    <string>暂未选择图片</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_mini_image_dynamic_select">
+                   <property name="font">
+                    <font>
+                     <family>微软雅黑</family>
+                     <pointsize>14</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>选择图片</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_image_dynamic_generate">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>生成蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_25">
+              <item>
+               <widget class="QGroupBox" name="groupBox_13">
+                <property name="title">
+                 <string>蓝图输出</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_26">
+                 <item>
+                  <widget class="QPlainTextEdit" name="plainTextEdit_mini_image_dynamic_output">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_mini_image_dynamic_copy">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑</family>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>复制蓝图</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_image">
+      <widget class="QWidget" name="tab_large_image">
        <attribute name="title">
-        <string>图片生成</string>
+        <string>大彩图生成(施工中)</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
+       <layout class="QVBoxLayout" name="verticalLayout_21">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_9">
+         <widget class="QTabWidget" name="tabWidget_3">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_large_screen">
+           <attribute name="title">
+            <string>显示屏生成</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_large_image_static">
+           <attribute name="title">
+            <string>静态图片生成</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_blueprint">
+       <attribute name="title">
+        <string>蓝图编辑(施工中)</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,1">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_15" stretch="1,0">
           <item>
-           <widget class="QGroupBox" name="groupBox_4">
-            <property name="title">
-             <string>图片蓝图大小</string>
+           <widget class="QGroupBox" name="groupBox_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_11">
-             <item>
-              <layout class="QGridLayout" name="gridLayout_2">
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_2">
-                 <property name="text">
-                  <string>宽度：</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_3">
-                 <property name="text">
-                  <string>高度：</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QSpinBox" name="spinBox_image_width">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimum">
-                  <number>1</number>
-                 </property>
-                 <property name="maximum">
-                  <number>9999</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QSpinBox" name="spinBox_image_height">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimum">
-                  <number>1</number>
-                 </property>
-                 <property name="maximum">
-                  <number>9999</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_4">
-               <property name="text">
-                <string>注：务必和显示屏相同</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_5">
             <property name="title">
-             <string>图片文件</string>
+             <string>蓝图输入</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_12">
+            <layout class="QVBoxLayout" name="verticalLayout_17">
              <item>
-              <widget class="QLabel" name="label_image">
+              <widget class="QPlainTextEdit" name="plainTextEdit_blueprint_input">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <property name="minimumSize">
-                <size>
-                 <width>175</width>
-                 <height>175</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>175</width>
-                 <height>175</height>
-                </size>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Sunken</enum>
-               </property>
-               <property name="text">
-                <string>暂未选择图片</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_image_select">
-               <property name="font">
-                <font>
-                 <family>Agency FB</family>
-                 <pointsize>14</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>选择图片</string>
                </property>
               </widget>
              </item>
@@ -389,7 +806,311 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_2">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_blueprint_clear">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>50</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>14</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>清空</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_blueprint_analyze">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>14</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>解析蓝图</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_19">
+          <item>
+           <widget class="QGroupBox" name="groupBox_9">
+            <property name="title">
+             <string>基本</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0,1,0">
+               <item row="4" column="1">
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>3：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QLabel" name="label_blueprint_icon_3">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_description_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>1：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_label_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_icon_3_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLabel" name="label_blueprint_icon_2">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>2：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>蓝图名称：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLabel" name="label_blueprint_icon_1">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_icon_1_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>蓝图图标：</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_icon_2_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>蓝图简介：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>4：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QLabel" name="label_blueprint_icon_4">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3">
+                <widget class="QPushButton" name="pushButton_blueprint_icon_4_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>编辑</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" colspan="2">
+                <widget class="QLabel" name="label_blueprint_description">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" colspan="2">
+                <widget class="QLabel" name="label_blueprint_label">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_10">
+            <property name="title">
+             <string>实体</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,1">
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>总实体数：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_blueprint_entity_count">
+                 <property name="text">
+                  <string>N/A</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -402,49 +1123,17 @@ p, li { white-space: pre-wrap; }
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_image_generate">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>0</height>
-             </size>
-            </property>
+           <widget class="QPushButton" name="pushButton_blueprint_copy">
             <property name="font">
              <font>
-              <family>Agency FB</family>
+              <family>微软雅黑</family>
               <pointsize>14</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
             <property name="text">
-             <string>生成蓝图</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
-          <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit_image_output">
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_image_copy">
-            <property name="font">
-             <font>
-              <family>Agency FB</family>
-              <pointsize>14</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>复制蓝图</string>
+             <string>应用更改并复制蓝图到剪切板</string>
             </property>
            </widget>
           </item>

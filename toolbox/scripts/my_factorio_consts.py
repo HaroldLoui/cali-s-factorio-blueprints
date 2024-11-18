@@ -24,6 +24,15 @@ class DirectionType(Enum):
 	NORTH_WEST = 14  # 西北
 
 
+class WireType(Enum):
+	"""信号线枚举"""
+	
+	RED_INPUT = 1  # 红线输入
+	GREEN_INPUT = 2  # 绿线输入
+	RED_OUTPUT = 3  # 红线输出
+	GREEN_OUTPUT = 4  # 绿线输出
+
+
 # 全品质列表
 ALL_QUALITY_LIST = ['normal', 'uncommon', 'rare', 'epic', 'legendary']
 
@@ -612,18 +621,8 @@ ALL_SIGNAL_DICT = {
 	'580': {'name': 'yumako-mash'},
 	'581': {'name': 'yumako-processing', 'type': 'recipe'},
 	'582': {'name': 'yumako-seed'},
-	'583': {'name': 'parameter-0'},
-	'584': {'name': 'parameter-1'},
-	'585': {'name': 'parameter-2'},
-	'586': {'name': 'parameter-3'},
-	'587': {'name': 'parameter-4'},
-	'588': {'name': 'parameter-5'},
-	'589': {'name': 'parameter-6'},
-	'590': {'name': 'parameter-7'},
-	'591': {'name': 'parameter-8'},
-	'592': {'name': 'parameter-9'},
-	'593': {'name': 'loader'},
-	'594': {'name': 'fast-loader'},
-	'595': {'name': 'express-loader'},
-	'596': {'name': 'turbo-loader'},
+	'583': {'name': 'loader'},
+	'584': {'name': 'fast-loader'},
+	'585': {'name': 'express-loader'},
+	'586': {'name': 'turbo-loader'},
 }
